@@ -3,86 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nonstop Shopp (NP)</title>
+  <title>Quiénes Somos | Nonstop Shopp (NP)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
+    html, body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg, #111, #000);
       color: white;
-      overflow-x: hidden;
-      position: relative;
-      min-height: 100vh;
+      height: 100%; overflow-x: hidden;
+      position: relative; min-height: 100vh;
       cursor: none;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 20px;
-      background: #0d0d0d;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      font-weight: 600;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #7289da; }
-    header {
-      text-align: center;
-      padding: 60px 20px 30px;
-      animation: fadeUp 1s ease-out;
-      position: relative;
-      z-index: 1;
-    }
-    header img#logo {
-      width: 140px;
-      margin-bottom: 15px;
-      user-select: none;
-      pointer-events: none;
-    }
-    h1 { font-size: 3rem; font-weight: 600; }
-    .contenido {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-      animation: fadeUp 1.5s ease-out;
-      position: relative;
-      z-index: 1;
-    }
-    .contenido p { font-size: 1.2rem; line-height: 1.6; }
-    .discord-logo {
-      margin-top: 30px;
-      display: inline-block;
-      transition: transform 0.2s ease, filter 0.3s ease;
-    }
-    .discord-logo img {
-      width: 60px;
-      cursor: pointer;
-      filter: drop-shadow(0 0 4px #7289da);
-    }
-    .discord-logo:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 8px #7289da);
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9rem;
-      color: #aaa;
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     #particles-js {
       position: fixed;
@@ -92,149 +23,138 @@
       height: 100%;
       z-index: -1;
     }
-
-    #language-selector { position: fixed; top: 15px; right: 20px; z-index: 2000; user-select: none; }
-    #language-selector .selected { display: flex; align-items: center; gap: 6px; cursor: pointer; background: rgba(20,20,20,0.8); padding: 5px 10px; border-radius: 8px; border: 1.5px solid #555; transition: border-color 0.3s; }
+    nav {
+      display: flex; justify-content: center; gap: 40px;
+      padding: 20px; background: #0d0d0d;
+      position: sticky; top: 0; z-index: 100;
+      font-weight: 600;
+    }
+    nav a { color: white; text-decoration: none; transition: color 0.3s; }
+    nav a:hover { color: #7289da; }
+    #language-selector { position: fixed; top:15px; right:20px; z-index:2000; user-select:none; }
+    #language-selector .selected {
+      display:flex; align-items:center; gap:6px; cursor:pointer;
+      background:rgba(20,20,20,0.8); padding:5px 10px; border-radius:8px;
+      border:1.5px solid #555; transition:border-color 0.3s;
+    }
     #language-selector .selected:hover { border-color: #7289da; }
-    #language-selector .selected img { width: 28px; height:20px; object-fit:cover; border-radius:3px; }
-    #language-selector .arrow { border: solid white; border-width: 0 2.5px 2.5px 0; display:inline-block; padding:4px; margin-left:4px; transform:rotate(45deg); transition:transform 0.3s; }
+    #language-selector .selected img {
+      width:28px; height:20px; object-fit:cover; border-radius:3px;
+    }
+    #language-selector .arrow {
+      border: solid white; border-width:0 2.5px 2.5px 0;
+      display:inline-block; padding:4px; margin-left:4px; transform:rotate(45deg);
+      transition:transform 0.3s;
+    }
     #language-selector.open .arrow { transform:rotate(-135deg); }
-    #language-selector .dropdown { margin-top:6px; background:rgba(20,20,20,0.9); border-radius:10px; box-shadow:0 0 10px rgba(114,137,218,0.5); overflow:hidden; display:none; width:60px; }
-    #language-selector.open .dropdown { display:block; }
-    #language-selector .dropdown div { display:flex; align-items:center; justify-content:center; gap:6px; padding:8px 0; cursor:pointer; border-top:1px solid #444; color:white; font-weight:600; font-size:0.95rem; }
+    #language-selector .dropdown {
+      margin-top:6px; background:rgba(20,20,20,0.9); border-radius:10px;
+      box-shadow:0 0 10px rgba(114,137,218,0.5); overflow:hidden;
+      display:none; width:60px;
+    }
+    #language-selector.open .dropdown { display:flex; flex-direction:column; }
+    #language-selector .dropdown div {
+      display:flex; align-items:center; justify-content:center;
+      gap:6px; padding:8px 0; cursor:pointer; border-top:1px solid #444;
+      color:white; font-weight:600; font-size:0.95rem;
+    }
     #language-selector .dropdown div img { width:28px; height:20px; border-radius:3px; }
-    #language-selector .dropdown div:hover { background-color:#7289da; color:white; }
-
-    .cursor-custom { position: fixed; top:0; left:0; width:12px; height:12px; background-color:rgba(255,255,255,0.8); border-radius:50%; pointer-events:none; z-index:10000; transform:translate(-50%,-50%); transition:transform 0.15s ease-out, background-color 0.25s; }
-    .cursor-custom.hover { transform:translate(-50%,-50%) scale(2); background-color:rgba(114,137,218,0.9); }
+    #language-selector .dropdown div:hover { background-color:#7289da; }
+    header {
+      text-align:center; padding:60px 20px 30px; animation:fadeUp 1s ease-out; position:relative; z-index:1;
+    }
+    header img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size:2.5rem; font-weight:600;
+    }
+    .contenido {
+      max-width:800px; margin:40px auto; padding:20px; animation:fadeUp 1.5s ease-out;
+      position:relative; z-index:1; font-size:1.1rem; line-height:1.6;
+    }
+    footer {
+      text-align:center; padding:30px; font-size:0.9rem; color:#aaa; position:relative; z-index:1;
+    }
+    .cursor-custom {
+      position:fixed; top:0; left:0; width:12px; height:12px; background-color:rgba(255,255,255,0.8);
+      border-radius:50%; pointer-events:none; z-index:10000; transform:translate(-50%,-50%);
+      transition:width 0.25s, height 0.25s, border-color 0.25s, box-shadow 0.25s;
+      border:2px solid transparent;
+    }
+    .cursor-custom.hover {
+      width:40px; height:40px; border-color:rgba(114,137,218,0.9);
+      box-shadow:0 0 12px rgba(114,137,218,0.7); background-color:rgba(114,137,218,0.15);
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
   </style>
 </head>
 <body>
   <div id="particles-js"></div>
-
   <div id="language-selector" tabindex="0">
     <div class="selected" id="selected-language" aria-haspopup="true" aria-expanded="false">
-      <img src="spanish-flag.png" alt="Español" />
-      <span>ES</span>
-      <i class="arrow"></i>
+      <img src="spanish-flag.png" alt="Español" /><span>ES</span><i class="arrow"></i>
     </div>
-    <div class="dropdown" role="menu" aria-label="Selector de idioma">
-      <div data-lang="es" role="menuitem">
-        <img src="spanish-flag.png" alt="Español" /> ES
-      </div>
-      <div data-lang="us" role="menuitem">
-        <img src="us-flag.png" alt="Inglés" /> US
-      </div>
+    <div class="dropdown" role="menu">
+      <div data-lang="es"><img src="spanish-flag.png" alt="ES" /> ES</div>
+      <div data-lang="us"><img src="us-flag.png" alt="US" /> US</div>
     </div>
   </div>
-
   <nav>
     <a href="inicio.html">Inicio</a>
     <a href="anuncios.html">Anuncios</a>
     <a href="quienes-somos.html">Quiénes Somos</a>
     <a href="redes-sociales.html">Redes Sociales</a>
   </nav>
-
   <header>
-    <img id="logo" src="logo.png" alt="Nonstop Shopp Logo" />
-    <h1>Nonstop Shopp (NP) 🛍️</h1>
+    <img src="logo.png" alt="Logo Nonstop Shopp">
+    <h1>Quiénes Somos 👥</h1>
   </header>
-
   <div class="contenido">
-    <p>
-      Bienvenido a <strong>Nonstop Shopp</strong>, tu aliado para potenciar tus redes sociales con seguidores y likes reales. 🚀<br><br>
-      Aquí encontrarás servicios confiables y rápidos para Instagram, TikTok, YouTube y más. 💼✨<br><br>
-      Confía en nuestra experiencia y únete a la comunidad que crece día a día. 🌟
-    </p>
-    <a class="discord-logo" href="https://discord.gg/Hj4HShU2tE" target="_blank" rel="noopener noreferrer">
-      <img src="discord-logo.png" alt="Discord Logo" />
-    </a>
+    <p>Somos <strong>Nonstop Shopp</strong> 🚀, tu tienda digital de confianza para impulsar tu presencia en redes sociales 🌐. Ofrecemos servicios de <strong>seguidores</strong>, <strong>likes</strong> y <strong>visitas</strong> para que destaques en plataformas como TikTok e Instagram 📸🎵. Nuestro objetivo es ayudarte a crecer de forma rápida, segura y accesible 💸⚡.</p>
   </div>
-
-  <footer>
-    &copy; 2025 Nonstop Shopp. Todos los derechos reservados.
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <footer>&copy; 2025 Nonstop Shopp. Todos los derechos reservados.</footer>
   <script>
     particlesJS("particles-js", {
-      particles: { number:{value:60}, size:{value:2}, color:{value:"#ffffff"}, opacity:{value:0.3}, line_linked:{enable:true,distance:100,color:"#ffffff",opacity:0.1,width:1}, move:{enable:true,speed:1} },
-      interactivity:{detect_on:"canvas",events:{onhover:{enable:true,mode:"repulse"}}}
-    });
-  </script>
-
-  <script>
-    const selector = document.getElementById('language-selector');
-    const selected = document.getElementById('selected-language');
-    const dropdown = selector.querySelector('.dropdown');
-    const options = dropdown.querySelectorAll('div[data-lang]');
-
-    selected.addEventListener('click', () => {
-      selector.classList.toggle('open');
-      selected.setAttribute('aria-expanded', selector.classList.contains('open'));
-    });
-    selector.addEventListener('mouseleave', () => {
-      selector.classList.remove('open');
-      selected.setAttribute('aria-expanded', false);
-    });
-
-    function setLanguage(lang) {
-      const h1 = document.querySelector('h1');
-      const p = document.querySelector('.contenido p');
-      const nav = document.querySelectorAll('nav a');
-      const footer = document.querySelector('footer');
-
-      if (lang === 'us') {
-        selected.querySelector('img').src = 'us-flag.png';
-        selected.querySelector('span').textContent = 'US';
-        h1.textContent = 'Nonstop Shopp (NP) 🛍️';
-        p.innerHTML = 'Welcome to <strong>Nonstop Shopp</strong>, your ally to boost your social media with real followers and likes. 🚀<br><br>Here you will find reliable and fast services for Instagram, TikTok, YouTube, and more. 💼✨<br><br>Trust our experience and join the growing community every day. 🌟';
-        nav[0].textContent = 'Home';
-        nav[1].textContent = 'Announcements';
-        nav[2].textContent = 'About Us';
-        nav[3].textContent = 'Social Networks';
-        footer.textContent = '© 2025 Nonstop Shopp. All rights reserved.';
-      } else {
-        selected.querySelector('img').src = 'spanish-flag.png';
-        selected.querySelector('span').textContent = 'ES';
-        h1.textContent = 'Nonstop Shopp (NP) 🛍️';
-        p.innerHTML = 'Bienvenido a <strong>Nonstop Shopp</strong>, tu aliado para potenciar tus redes sociales con seguidores y likes reales. 🚀<br><br>Aquí encontrarás servicios confiables y rápidos para Instagram, TikTok, YouTube y más. 💼✨<br><br>Confía en nuestra experiencia y únete a la comunidad que crece día a día. 🌟';
-        nav[0].textContent = 'Inicio';
-        nav[1].textContent = 'Anuncios';
-        nav[2].textContent = 'Quiénes Somos';
-        nav[3].textContent = 'Redes Sociales';
-        footer.textContent = '© 2025 Nonstop Shopp. Todos los derechos reservados.';
+      "particles": {
+        "number": { "value": 60 },
+        "size": { "value": 2 },
+        "color": { "value": "#ffffff" },
+        "opacity": { "value": 0.3 },
+        "line_linked": { "enable": true, "distance": 100, "color": "#ffffff", "opacity": 0.1, "width": 1 },
+        "move": { "enable": true, "speed": 1 }
+      },
+      "interactivity": {
+        "events": { "onhover": { "enable": true, "mode": "repulse" } }
       }
-      selector.classList.remove('open');
-    }
-
-    options.forEach(option => {
-      option.addEventListener('click', () => setLanguage(option.getAttribute('data-lang')));
     });
   </script>
-
   <script>
-    const cursor = document.createElement('div');
-    cursor.classList.add('cursor-custom');
-    document.body.appendChild(cursor);
-
-    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
-    function anim() {
-      curX += (mouseX - curX) * 0.15;
-      curY += (mouseY - curY) * 0.15;
-      cursor.style.left = curX + 'px';
-      cursor.style.top = curY + 'px';
-      requestAnimationFrame(anim);
+    const selector=document.getElementById('language-selector'), selected=document.getElementById('selected-language'), dropdown=selector.querySelector('.dropdown');
+    selected.addEventListener('click',()=>{selector.classList.toggle('open');selected.setAttribute('aria-expanded',selector.classList.contains('open'));});
+    selector.addEventListener('mouseleave',()=>{selector.classList.remove('open');selected.setAttribute('aria-expanded',false);});
+    function setLanguage(lang){
+      document.querySelectorAll('nav a').forEach((el,i)=>el.textContent={es:['Inicio','Anuncios','Quiénes Somos','Redes Sociales'],us:['Home','Announcements','About Us','Social Networks']}[lang][i]);
+      document.querySelector('header h1').textContent = lang==='es'?'Quiénes Somos 👥':'About Us 👥';
+      document.querySelector('.contenido p').textContent = lang==='es'?'Somos Nonstop Shopp 🚀, tu tienda digital de confianza para impulsar tu presencia en redes sociales 🌐. Ofrecemos servicios de seguidores, likes y visitas para que destaques en plataformas como TikTok e Instagram 📸🎵. Nuestro objetivo es ayudarte a crecer de forma rápida, segura y accesible 💸⚡.':'We are Nonstop Shopp 🚀, your trusted digital store to boost your presence on social media 🌐. We offer followers, likes, and views services so you can stand out on platforms like TikTok and Instagram 📸🎵. Our goal is to help you grow quickly, safely, and affordably 💸⚡.';
+      document.querySelector('footer').textContent = lang==='es'?'© 2025 Nonstop Shopp. Todos los derechos reservados.':'© 2025 Nonstop Shopp. All rights reserved.';
+      selected.querySelector('img').src = lang==='es'?'spanish-flag.png':'us-flag.png';
+      selected.querySelector('span').textContent = lang.toUpperCase();
+      selector.classList.remove('open');
     }
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-    document.querySelectorAll('a, button, input, select, textarea, label, nav a, .discord-logo').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-    anim();
+    dropdown.querySelectorAll('div[data-lang]').forEach(o=>o.addEventListener('click',()=>setLanguage(o.getAttribute('data-lang'))));
+    setLanguage('es');
+  </script>
+  <script>
+    const cursor=document.createElement('div');cursor.classList.add('cursor-custom');document.body.appendChild(cursor);
+    let mouseX=0,mouseY=0,posX=0,posY=0;
+    function animateCursor(){posX+=(mouseX-posX)*0.2;posY+=(mouseY-posY)*0.2;cursor.style.transform=`translate3d(${posX}px,${posY}px,0) translate(-50%,-50%)`;requestAnimationFrame(animateCursor);}animateCursor();
+    document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;});
+    document.querySelectorAll('a,button,input,select,textarea,label,nav a').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
   </script>
 </body>
 </html>
