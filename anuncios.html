@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anuncios | Nonstop Shopp (NP)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    html, body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #111, #000);
+      color: white;
+      height: 100%;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      cursor: none;
+    }
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+      background: #0d0d0d;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      font-weight: 600;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #7289da;
+    }
+    #language-selector {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      z-index: 2000;
+      user-select: none;
+    }
+    #language-selector .selected {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      background: rgba(20, 20, 20, 0.8);
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1.5px solid #555;
+      transition: border-color 0.3s;
+    }
+    #language-selector .selected:hover {
+      border-color: #7289da;
+    }
+    #language-selector .selected img {
+      width: 28px;
+      height: 20px;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+    #language-selector .arrow {
+      border: solid white;
+      border-width: 0 2.5px 2.5px 0;
+      display: inline-block;
+      padding: 4px;
+      margin-left: 4px;
+      transform: rotate(45deg);
+      transition: transform 0.3s;
+    }
+    #language-selector.open .arrow {
+      transform: rotate(-135deg);
+    }
+    #language-selector .dropdown {
+      margin-top: 6px;
+      background: rgba(20, 20, 20, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(114, 137, 218, 0.5);
+      overflow: hidden;
+      display: none;
+      width: 60px;
+      flex-direction: column;
+    }
+    #language-selector.open .dropdown {
+      display: flex;
+    }
+    #language-selector .dropdown div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 0;
+      cursor: pointer;
+      border-top: 1px solid #444;
+      color: white;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    #language-selector .dropdown div img {
+      width: 28px;
+      height: 20px;
+      border-radius: 3px;
+    }
+    #language-selector .dropdown div:hover {
+      background-color: #7289da;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      animation: fadeUp 1s ease-out;
+    }
+    .anuncios {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      animation: fadeUp 1.5s ease-out;
+      position: relative;
+      z-index: 1;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #aaa;
+      position: relative;
+      z-index: 1;
+    }
+    .cursor-custom {
+      position: fixed;
+      top: 0; left: 0;
+      width: 12px; height: 12px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s, height 0.25s, border-color 0.25s, box-shadow 0.25s;
+      border: 2px solid transparent;
+    }
+    .cursor-custom.hover {
+      width: 40px;
+      height: 40px;
+      border-color: rgba(114, 137, 218, 0.9);
+      box-shadow: 0 0 12px rgba(114, 137, 218, 0.7);
+      background-color: rgba(114, 137, 218, 0.15);
+    }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div id="language-selector" tabindex="0">
+    <div class="selected" id="selected-language" aria-haspopup="true" aria-expanded="false">
+      <img src="spanish-flag.png" alt="Español" /><span>ES</span><i class="arrow"></i>
+    </div>
+    <div class="dropdown" role="menu">
+      <div data-lang="es"><img src="spanish-flag.png" alt="ES" /> ES</div>
+      <div data-lang="us"><img src="us-flag.png" alt="US" /> US</div>
+    </div>
+  </div>
+
+  <nav>
+    <a href="inicio.html">Inicio</a>
+    <a href="anuncios.html">Anuncios</a>
+    <a href="quienes-somos.html">Quiénes Somos</a>
+    <a href="redes-sociales.html">Redes Sociales</a>
+  </nav>
+
+  <header>
+    <h1>Anuncios 📢</h1>
+  </header>
+
+  <div class="anuncios">
+    <p>Próximamente encontrarás aquí todas nuestras novedades y lanzamientos. ¡Estate atento!</p>
+  </div>
+
+  <footer>
+    &copy; 2025 Nonstop Shopp. Todos los derechos reservados.
+  </footer>
+
+  <!-- PARTICLES JS -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        size: { value: 2 },
+        color: { value: "#ffffff" },
+        opacity: { value: 0.3 },
+        line_linked: {
+          enable: true,
+          distance: 100,
+          color: "#ffffff",
+          opacity: 0.1,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: {
+            enable: true,
+            mode: "repulse"
+          }
+        }
+      }
+    });
+  </script>
+
+  <!-- LANGUAGE SELECTOR -->
+  <script>
+    const selector = document.getElementById('language-selector');
+    const selected = document.getElementById('selected-language');
+    const dropdown = selector.querySelector('.dropdown');
+
+    selected.addEventListener('click', () => {
+      selector.classList.toggle('open');
+      selected.setAttribute('aria-expanded', selector.classList.contains('open'));
+    });
+
+    selector.addEventListener('mouseleave', () => {
+      selector.classList.remove('open');
+      selected.setAttribute('aria-expanded', false);
+    });
+
+    function setLanguage(lang) {
+      const navLinks = document.querySelectorAll('nav a');
+      const headerH1 = document.querySelector('header h1');
+      const anuncioP = document.querySelector('.anuncios p');
+      const footerEl = document.querySelector('footer');
+
+      const navText = {
+        es: ['Inicio', 'Anuncios', 'Quiénes Somos', 'Redes Sociales'],
+        us: ['Home', 'Announcements', 'About Us', 'Social Networks']
+      };
+
+      navLinks.forEach((el, i) => {
+        el.textContent = navText[lang][i];
+      });
+
+      headerH1.textContent = lang === 'es' ? 'Anuncios 📢' : 'Announcements 📢';
+      anuncioP.textContent = lang === 'es' ? 'Próximamente encontrarás aquí todas nuestras novedades y lanzamientos. ¡Estate atento!' : 'Soon you will find all our news and launches here. Stay tuned!';
+      footerEl.textContent = lang === 'es' ? '© 2025 Nonstop Shopp. Todos los derechos reservados.' : '© 2025 Nonstop Shopp. All rights reserved.';
+
+      selected.querySelector('img').src = lang === 'es' ? 'spanish-flag.png' : 'us-flag.png';
+      selected.querySelector('span').textContent = lang.toUpperCase();
+
+      selector.classList.remove('open');
+      selected.setAttribute('aria-expanded', false);
+    }
+
+    dropdown.querySelectorAll('div[data-lang]').forEach(option => {
+      option.addEventListener('click', () => setLanguage(option.getAttribute('data-lang')));
+    });
+
+    setLanguage('es');
+  </script>
+
+  <!-- CUSTOM CURSOR -->
+  <script>
+    const cursor = document.createElement('div');
+    cursor.classList.add('cursor-custom');
+    document.body.appendChild(cursor);
+
+    let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
+
+    function animateCursor() {
+      posX += (mouseX - posX) * 0.2;
+      posY += (mouseY - posY) * 0.2;
+      cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Hover effect on interactive elements
+    document.querySelectorAll('a, button, input, select, textarea, label, nav a').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+  </script>
+</body>
+</html>

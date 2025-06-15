@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redes Sociales | Nonstop Shopp (NP)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="description" content="Nonstop Shopp - Servicios de crecimiento para tus redes sociales como TikTok e Instagram. Seguidores reales y más." />
+  <meta name="keywords" content="nonstop shopp, seguidores tiktok, seguidores instagram, crecimiento redes sociales, servicios tiktok, servicios instagram" />
+  <meta name="author" content="Nonstop Shopp" />
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Nonstop Shopp (NP) - Redes Sociales" />
+  <meta property="og:description" content="Aumentá tu presencia en redes sociales con nuestros servicios. Seguidores, likes y más en TikTok e Instagram." />
+  <meta property="og:image" content="preview.jpg" />
+  <meta property="og:url" content="https://nonstopshopp.com/redes-sociales.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #111 0%, #000 100%);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      cursor: none;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+      background: #0d0d0d;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      animation: fadeIn 1s ease;
+      position: relative;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+      transition: color 0.3s, transform 0.3s;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    nav a:hover {
+      color: #7289da;
+      transform: scale(1.1);
+      background: rgba(114, 137, 218, 0.1);
+    }
+
+    .lang-selector {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      z-index: 20;
+    }
+    .lang-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .lang-button img {
+      width: 24px;
+      height: auto;
+      user-select: none;
+      pointer-events: none;
+    }
+    .lang-arrow {
+      font-size: 12px;
+      animation: bounce 1.5s infinite;
+      color: white;
+      user-select: none;
+      pointer-events: none;
+    }
+    .lang-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 35px;
+      right: 0;
+      background: #1a1a1a;
+      border-radius: 6px;
+      padding: 8px;
+      gap: 8px;
+      min-width: 60px;
+      user-select: none;
+    }
+    .lang-menu button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .lang-menu img {
+      width: 18px;
+      user-select: none;
+      pointer-events: none;
+    }
+    .lang-selector.active .lang-menu {
+      display: flex;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 40px 0 50px 0;
+      position: relative;
+      z-index: 2;
+      user-select: none;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(114, 137, 218, 0.4);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .card:hover {
+      background-color: #2c2c2c;
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(114, 137, 218, 0.7);
+    }
+    .card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 15px;
+      user-select: none;
+      pointer-events: none;
+    }
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+      user-select: none;
+    }
+    .card p {
+      font-size: 1.05rem;
+    }
+    .card a {
+      color: #7289da;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      margin: 60px 0 30px 0;
+      font-size: 0.9rem;
+      color: #aaa;
+      position: relative;
+      z-index: 2;
+      user-select: none;
+    }
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      display: block;
+    }
+    /* CURSOR CUSTOM IGUAL A INICIO.HTML */
+    .cursor-custom {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      background-color: rgba(255,255,255,0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s, height 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .cursor-custom.hover {
+      width: 40px;
+      height: 40px;
+      border-color: rgba(114,137,218,0.9);
+      box-shadow: 0 0 12px rgba(114,137,218,0.7);
+      background-color: rgba(114,137,218,0.15);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-selector" id="langSelector">
+    <button class="lang-button" id="langToggle" aria-label="Seleccionar idioma">
+      <img src="https://flagcdn.com/w40/es.png" alt="ES" />
+      <span class="lang-arrow">▼</span>
+    </button>
+    <div class="lang-menu" id="langMenu" role="menu" aria-hidden="true">
+      <button role="menuitem" onclick="setLanguage('es')">
+        <img src="https://flagcdn.com/w40/es.png" alt="ES" /> ES
+      </button>
+      <button role="menuitem" onclick="setLanguage('en')">
+        <img src="https://flagcdn.com/w40/us.png" alt="US" /> US
+      </button>
+    </div>
+  </div>
+
+  <nav>
+    <a href="inicio.html"><span class="lang" data-es="Inicio" data-en="Home"></span></a>
+    <a href="anuncios.html"><span class="lang" data-es="Anuncios" data-en="Ads"></span></a>
+    <a href="quienes-somos.html"><span class="lang" data-es="Quiénes Somos" data-en="About Us"></span></a>
+    <a href="redes-sociales.html"><span class="lang" data-es="Redes Sociales" data-en="Social Networks"></span></a>
+  </nav>
+
+  <h2>🌐 <span class="lang" data-es="Redes Sociales" data-en="Social Networks"></span> 🌐</h2>
+
+  <div class="services">
+    <div class="card">
+      <img src="tiktoklogo.png" alt="TikTok Logo" />
+      <h3><span class="lang" data-es="Seguidores TikTok" data-en="TikTok Followers"></span></h3>
+      <p>
+        <span class="lang" data-es="Crecé con seguidores reales en" data-en="Grow with real followers on"></span> 
+        <a href="https://www.tiktok.com/@nonstop.shopp" target="_blank" rel="noopener noreferrer">nonstop.shopp</a> 🎵
+      </p>
+    </div>
+    <div class="card">
+      <img src="instagramlogo.png" alt="Instagram Logo" />
+      <h3><span class="lang" data-es="Seguidores Instagram" data-en="Instagram Followers"></span></h3>
+      <p>
+        <span class="lang" data-es="Crece tu comunidad en" data-en="Grow your community on"></span> 
+        <a href="https://instagram.com/nonstop.shopp_" target="_blank" rel="noopener noreferrer">nonstop.shopp_</a> 📸
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Nonstop Shopp. <span class="lang" data-es="Todos los derechos reservados." data-en="All rights reserved."></span>
+  </footer>
+
+  <canvas id="particles"></canvas>
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particlesArray = [];
+
+    function initCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.radius = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.6;
+        this.speedY = (Math.random() - 0.5) * 0.6;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > width) this.speedX *= -1;
+        if (this.y < 0 || this.y > height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+      }
+    }
+
+    function connectParticles() {
+      for (let i = 0; i < particlesArray.length; i++) {
+        for (let j = i + 1; j < particlesArray.length; j++) {
+          const dx = particlesArray[i].x - particlesArray[j].x;
+          const dy = particlesArray[i].y - particlesArray[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 1;
+            ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+            ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function createParticles(count) {
+      particlesArray = [];
+      for(let i=0; i<count; i++){
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      initCanvas();
+      createParticles(Math.floor(width / 10));
+    });
+
+    initCanvas();
+    createParticles(Math.floor(window.innerWidth / 10));
+    animate();
+
+    const langToggle = document.getElementById('langToggle');
+    const langSelector = document.getElementById('langSelector');
+    const langMenu = document.getElementById('langMenu');
+
+    function setLanguage(lang) {
+      document.querySelectorAll('.lang').forEach(el => {
+        el.innerText = el.dataset[lang];
+      });
+      const langImg = langToggle.querySelector('img');
+      if (lang === 'es') {
+        langImg.src = 'https://flagcdn.com/w40/es.png';
+        langImg.alt = 'ES';
+      } else if (lang === 'en') {
+        langImg.src = 'https://flagcdn.com/w40/us.png';
+        langImg.alt = 'US';
+      }
+      closeLangMenu();
+    }
+
+    function toggleLangMenu() {
+      langSelector.classList.toggle('active');
+      langMenu.setAttribute('aria-hidden', !langSelector.classList.contains('active'));
+    }
+
+    function closeLangMenu() {
+      langSelector.classList.remove('active');
+      langMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    langToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleLangMenu();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langSelector.contains(e.target)) {
+        closeLangMenu();
+      }
+    });
+
+    setLanguage('es');
+  </script>
+  <!-- Pegar script de cursor-custom aquí -->
+  <script>
+    const cursor = document.createElement('div');
+    cursor.classList.add('cursor-custom');
+    document.body.appendChild(cursor);
+
+    let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
+    function animateCursor() {
+      posX += (mouseX - posX) * 0.2;
+      posY += (mouseY - posY) * 0.2;
+      cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    document.querySelectorAll('a, button, input, select, textarea, label, nav a').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+  </script>
+</body>
+</html>
+
+</head>
+<body>
+<!-- contenido intacto del body -->
+<!-- se mantiene igual hasta antes del cierre de </html> -->
+</body>
+</html>
