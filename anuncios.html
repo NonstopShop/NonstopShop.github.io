@@ -139,6 +139,16 @@
       background: rgba(20, 20, 20, 0.3);
       border-radius: 10px;
     }
+
+    /* Nuevo estilo para el punto y texto de actualización */
+    .actualizacion {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #7289da;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -205,10 +215,12 @@
   </header>
 
   <div class="productos" aria-label="Productos destacados">
-   
+    <!-- Aquí podrían ir productos destacados o contenido futuro -->
+  </div>
 
   <div class="anuncios">
-    <p>Próximamente encontrarás aquí todas nuestras novedades y lanzamientos. ¡Estate atento!</p>
+    <div class="actualizacion">• Actualización Nro 1</div>
+    <p>🔹 🚀 ¡Grandes novedades en camino! Ahora nuestra web es más rápida ⚡, compatible con móviles y tablets 📱✨, y con nuevas categorías para que encuentres justo lo que buscas 🎯. ¡No te pierdas nada, mantente atento! 👀🔥</p>
   </div>
 
   <footer>
@@ -281,7 +293,7 @@
       });
 
       headerH1.textContent = lang === 'es' ? 'Anuncios 📢' : 'Announcements 📢';
-      anuncioP.textContent = lang === 'es' ? 'Próximamente encontrarás aquí todas nuestras novedades y lanzamientos. ¡Estate atento!' : 'Soon you will find all our news and launches here. Stay tuned!';
+      anuncioP.textContent = lang === 'es' ? '🔹 🚀 ¡Grandes novedades en camino! Ahora nuestra web es más rápida ⚡, compatible con móviles y tablets 📱✨, y con nuevas categorías para que encuentres justo lo que buscas 🎯. ¡No te pierdas nada, mantente atento! 👀🔥' : '🔹 🚀 Great news coming soon! Our site is now faster ⚡, mobile and tablet friendly 📱✨, with new categories so you find exactly what you need 🎯. Don’t miss out, stay tuned! 👀🔥';
 
       if(productosDiv) {
         productosDiv.querySelector('h2').textContent = lang === 'es' ? 'Productos ⭐' : 'Products ⭐';
