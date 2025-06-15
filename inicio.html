@@ -107,6 +107,69 @@
 
     .cursor-custom { position: fixed; top:0; left:0; width:12px; height:12px; background-color:rgba(255,255,255,0.8); border-radius:50%; pointer-events:none; z-index:10000; transform:translate(-50%,-50%); transition:transform 0.15s ease-out, background-color 0.25s; }
     .cursor-custom.hover { transform:translate(-50%,-50%) scale(2); background-color:rgba(114,137,218,0.9); }
+
+    /* === NUEVO: Modal de alerta === */
+
+    /* Cuando el modal está activo, aplicamos blur y bloqueo solo al fondo */
+    body.blur-background > :not(#user-alert) {
+      filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
+      transition: filter 0.3s ease;
+    }
+    body.blur-background {
+      overflow: hidden;
+    }
+
+    #user-alert {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #0a122a;
+      border: 2.5px solid #63a4ff;
+      border-radius: 20px;
+      padding: 30px 40px;
+      max-width: 320px;
+      box-shadow: 0 0 15px #63a4ffaa;
+      color: #e1e9ff;
+      font-weight: 600;
+      font-size: 1.15rem;
+      text-align: center;
+      z-index: 9999;
+      user-select: text;
+      line-height: 1.4;
+    }
+    #user-alert p {
+      margin-bottom: 16px;
+    }
+    #user-alert .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-weight: 700;
+      font-size: 1.7rem;
+      color: #63a4ff;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      line-height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #user-alert .close-btn:hover,
+    #user-alert .close-btn:active,
+    #user-alert .close-btn:focus {
+      transform: scale(1.3);
+      color: #a0c8ff;
+      outline: none;
+      background: rgba(255 255 255 / 0.1);
+    }
+
   </style>
 </head>
 <body>
@@ -155,6 +218,12 @@
   <footer>
     &copy; 2025 Nonstop Shopp. Todos los derechos reservados.
   </footer>
+
+  <div id="user-alert" role="alert" aria-live="assertive" aria-modal="true" tabindex="-1">
+    <span class="close-btn" id="alert-close" role="button" aria-label="Cerrar advertencia">&times;</span>
+    <p>⚠️ <strong>Por comodidad del usuario!</strong></p>
+    <p>Si estás en un dispositivo móvil / tablet 📱 usa el modo <em>vertical</em> para mayor comodidad.</p>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
@@ -230,5 +299,21 @@
     });
     anim();
   </script>
+
+  <script>
+    // Al cargar la página, activamos el blur y mostramos modal
+    window.addEventListener('load', () => {
+      document.body.classList.add('blur-background');
+    });
+
+    const alertModal = document.getElementById('user-alert');
+    const alertCloseBtn = document.getElementById('alert-close');
+
+    alertCloseBtn.addEventListener('click', () => {
+      alertModal.style.display = 'none';
+      document.body.classList.remove('blur-background');
+    });
+  </script>
+
 </body>
 </html>
