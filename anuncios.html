@@ -127,7 +127,7 @@
       font-weight: 600;
       animation: fadeUp 1s ease-out;
     }
-    .anuncios {
+    .productos, .anuncios {
       max-width: 800px;
       margin: 40px auto;
       padding: 20px;
@@ -136,6 +136,8 @@
       z-index: 1;
       font-size: 1.1rem;
       line-height: 1.6;
+      background: rgba(20, 20, 20, 0.3);
+      border-radius: 10px;
     }
     footer {
       text-align: center;
@@ -190,15 +192,20 @@
   </div>
 
   <nav>
+    <a href="productos.html">Productos</a>
     <a href="inicio.html">Inicio</a>
     <a href="anuncios.html">Anuncios</a>
     <a href="quienes-somos.html">Quiénes Somos</a>
     <a href="redes-sociales.html">Redes Sociales</a>
+    <a href="productos.html">Productos</a>
   </nav>
 
   <header>
     <h1>Anuncios 📢</h1>
   </header>
+
+  <div class="productos" aria-label="Productos destacados">
+   
 
   <div class="anuncios">
     <p>Próximamente encontrarás aquí todas nuestras novedades y lanzamientos. ¡Estate atento!</p>
@@ -262,10 +269,11 @@
       const headerH1 = document.querySelector('header h1');
       const anuncioP = document.querySelector('.anuncios p');
       const footerEl = document.querySelector('footer');
-
+      const productosDiv = document.querySelector('.productos');
+      
       const navText = {
-        es: ['Inicio', 'Anuncios', 'Quiénes Somos', 'Redes Sociales'],
-        us: ['Home', 'Announcements', 'About Us', 'Social Networks']
+        es: ['Productos', 'Inicio', 'Anuncios', 'Quiénes Somos', 'Redes Sociales'],
+        us: ['Products', 'Home', 'Announcements', 'About Us', 'Social Networks']
       };
 
       navLinks.forEach((el, i) => {
@@ -274,6 +282,17 @@
 
       headerH1.textContent = lang === 'es' ? 'Anuncios 📢' : 'Announcements 📢';
       anuncioP.textContent = lang === 'es' ? 'Próximamente encontrarás aquí todas nuestras novedades y lanzamientos. ¡Estate atento!' : 'Soon you will find all our news and launches here. Stay tuned!';
+
+      if(productosDiv) {
+        productosDiv.querySelector('h2').textContent = lang === 'es' ? 'Productos ⭐' : 'Products ⭐';
+        const items = productosDiv.querySelectorAll('ul li');
+        const itemsEs = ['Seguidores Instagram', 'Likes TikTok', 'Visitas YouTube', 'Servicios para redes sociales'];
+        const itemsUs = ['Instagram Followers', 'TikTok Likes', 'YouTube Views', 'Social media services'];
+        items.forEach((li, idx) => {
+          li.textContent = lang === 'es' ? itemsEs[idx] : itemsUs[idx];
+        });
+      }
+
       footerEl.textContent = lang === 'es' ? '© 2025 Nonstop Shopp. Todos los derechos reservados.' : '© 2025 Nonstop Shopp. All rights reserved.';
 
       selected.querySelector('img').src = lang === 'es' ? 'spanish-flag.png' : 'us-flag.png';
