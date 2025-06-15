@@ -5,16 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Redes Sociales | Nonstop Shopp (NP)</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="description" content="Nonstop Shopp - Servicios de crecimiento para tus redes sociales como TikTok e Instagram. Seguidores reales y más." />
-  <meta name="keywords" content="nonstop shopp, seguidores tiktok, seguidores instagram, crecimiento redes sociales, servicios tiktok, servicios instagram" />
-  <meta name="author" content="Nonstop Shopp" />
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Nonstop Shopp (NP) - Redes Sociales" />
-  <meta property="og:description" content="Aumentá tu presencia en redes sociales con nuestros servicios. Seguidores, likes y más en TikTok e Instagram." />
-  <meta property="og:image" content="preview.jpg" />
-  <meta property="og:url" content="https://nonstopshopp.com/redes-sociales.html" />
-  <meta name="twitter:card" content="summary_large_image" />
   <style>
     html, body {
       margin: 0; padding: 0; height: 100%;
@@ -24,7 +14,10 @@
       overflow-x: hidden;
       position: relative;
       min-height: 100vh;
-      cursor: none;
+      cursor: url('cursor_gordito.cur'), auto; /* cursor gordito igual que inicio.html */
+    }
+    a:hover {
+      cursor: pointer; /* cursor normal pointer en hover */
     }
     nav {
       display: flex;
@@ -192,27 +185,6 @@
       z-index: 1;
       display: block;
     }
-    /* CURSOR CUSTOM IGUAL A INICIO.HTML */
-    .cursor-custom {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 12px;
-      height: 12px;
-      background-color: rgba(255,255,255,0.8);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      transition: width 0.25s, height 0.25s, border-color 0.25s, box-shadow 0.25s;
-    }
-    .cursor-custom.hover {
-      width: 40px;
-      height: 40px;
-      border-color: rgba(114,137,218,0.9);
-      box-shadow: 0 0 12px rgba(114,137,218,0.7);
-      background-color: rgba(114,137,218,0.15);
-    }
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -240,18 +212,25 @@
   </div>
 
   <nav>
+
     <a href="inicio.html"><span class="lang" data-es="Inicio" data-en="Home"></span></a>
     <a href="anuncios.html"><span class="lang" data-es="Anuncios" data-en="Ads"></span></a>
     <a href="quienes-somos.html"><span class="lang" data-es="Quiénes Somos" data-en="About Us"></span></a>
     <a href="redes-sociales.html"><span class="lang" data-es="Redes Sociales" data-en="Social Networks"></span></a>
+    <a href="productos.html">Productos</a>
   </nav>
+
+  <!-- Aquí agregué el logo arriba del texto grande -->
+  <div style="text-align: center; margin-top: 30px;">
+    <img src="logo.png" alt="Logo Nonstop Shopp" style="max-width: 180px; height: auto; user-select: none; pointer-events: none;" />
+  </div>
 
   <h2>🌐 <span class="lang" data-es="Redes Sociales" data-en="Social Networks"></span> 🌐</h2>
 
   <div class="services">
     <div class="card">
       <img src="tiktoklogo.png" alt="TikTok Logo" />
-      <h3><span class="lang" data-es="Seguinos en TikTok" data-en="TikTok Followers"></span></h3>
+      <h3><span class="lang" data-es="Seguinos en TikTok!" data-en="TikTok Followers"></span></h3>
       <p>
         <span class="lang" data-es="Crecé con seguidores reales en" data-en="Grow with real followers on"></span> 
         <a href="https://www.tiktok.com/@nonstop.shopp" target="_blank" rel="noopener noreferrer">nonstop.shopp</a> 🎵
@@ -259,7 +238,7 @@
     </div>
     <div class="card">
       <img src="instagramlogo.png" alt="Instagram Logo" />
-      <h3><span class="lang" data-es="Seguinos en Instagram" data-en="Instagram Followers"></span></h3>
+      <h3><span class="lang" data-es="Seguinos en Instagram!" data-en="Instagram Followers"></span></h3>
       <p>
         <span class="lang" data-es="Crece tu comunidad en" data-en="Grow your community on"></span> 
         <a href="https://instagram.com/nonstop.shopp_" target="_blank" rel="noopener noreferrer">nonstop.shopp_</a> 📸
@@ -393,37 +372,5 @@
 
     setLanguage('es');
   </script>
-  <!-- Pegar script de cursor-custom aquí -->
-  <script>
-    const cursor = document.createElement('div');
-    cursor.classList.add('cursor-custom');
-    document.body.appendChild(cursor);
-
-    let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
-    function animateCursor() {
-      posX += (mouseX - posX) * 0.2;
-      posY += (mouseY - posY) * 0.2;
-      cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    document.querySelectorAll('a, button, input, select, textarea, label, nav a').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-  </script>
-</body>
-</html>
-
-</head>
-<body>
-<!-- contenido intacto del body -->
-<!-- se mantiene igual hasta antes del cierre de </html> -->
 </body>
 </html>
