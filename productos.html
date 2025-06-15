@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Productos - Nonstop Shopp (NP)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #111, #000);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      cursor: none; /* ocultamos cursor nativo para mostrar cursor custom */
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+      background: #0d0d0d;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      font-weight: 600;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #7289da; }
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+      animation: fadeUp 1s ease-out;
+      position: relative;
+      z-index: 1;
+    }
+    h1 { font-size: 3rem; font-weight: 600; user-select: none; }
+    .contenido {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      animation: fadeUp 1.5s ease-out;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .grupo {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid #2c2c2c;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(114,137,218,0.1);
+      position: relative;
+      transition: 0.3s;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grupo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(114,137,218,0.3);
+    }
+    .grupo img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .grupo h2 {
+      margin: 10px 0;
+      font-size: 1.5rem;
+    }
+    .grupo button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 2px solid #7289da;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      user-select: none;
+    }
+    .grupo button:hover {
+      background: #7289da;
+    }
+    .submenu {
+      display: none;
+      margin-top: 15px;
+      text-align: left;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      padding: 10px 15px;
+      animation: slideUp 0.4s ease-out forwards;
+    }
+    .submenu p {
+      margin: 5px 0;
+      font-size: 1rem;
+      user-select: none;
+    }
+    .grupo.active .submenu {
+      display: block;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Cursor personalizado */
+    .cursor-custom {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 12px; 
+      height: 12px; 
+      background-color: rgba(255,255,255,0.8);
+      border-radius: 50%; 
+      pointer-events: none; 
+      z-index: 10000; 
+      transform: translate(-50%, -50%);
+      transition: width 0.25s, height 0.25s, border-color 0.25s, box-shadow 0.25s;
+      border: 2px solid transparent;
+    }
+    .cursor-custom.hover {
+      width: 40px; 
+      height: 40px; 
+      border-color: rgba(114,137,218,0.9);
+      box-shadow: 0 0 12px rgba(114,137,218,0.7); 
+      background-color: rgba(114,137,218,0.15);
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <nav>
+    <a href="inicio.html">Inicio</a>
+    <a href="anuncios.html">Anuncios</a>
+    <a href="quienes-somos.html">Quiénes Somos</a>
+    <a href="redes-sociales.html">Redes Sociales</a>
+    <a href="productos.html">Productos</a>
+  </nav>
+
+  <header>
+    <img src="logo.png" alt="Nonstop Shopp Logo" style="display:block; margin: 0 auto 15px; width: 120px; user-select:none;" />
+    <h1>Productos 🛒✨</h1>
+  </header>
+
+  <div class="contenido">
+    <div class="grupo">
+      <img src="instagramlogo.png" alt="Instagram" />
+      <h2>Instagram</h2>
+      <button onclick="toggleMenu(this)">Ver Servicios</button>
+      <div class="submenu">
+        <p>Seguidores</p>
+        <p>Likes</p>
+        <p>Visitas</p>
+        <p>Comentarios</p>
+      </div>
+    </div>
+    <div class="grupo">
+      <img src="tiktoklogo.png" alt="TikTok" />
+      <h2>TikTok</h2>
+      <button onclick="toggleMenu(this)">Ver Servicios</button>
+      <div class="submenu">
+        <p>Seguidores</p>
+        <p>Likes</p>
+        <p>Visualizaciones</p>
+        <p>Compartidos</p>
+      </div>
+    </div>
+    <div class="grupo">
+      <img src="youtubelogo.png" alt="YouTube" />
+      <h2>YouTube</h2>
+      <button onclick="toggleMenu(this)">Ver Servicios</button>
+      <div class="submenu">
+        <p>Suscriptores</p>
+        <p>Reproducciones</p>
+        <p>Comentarios</p>
+        <p>Likes y dislikes</p>
+      </div>
+    </div>
+    <div class="grupo">
+      <img src="spotifylogo.png" alt="Spotify" />
+      <h2>Spotify</h2>
+      <button onclick="toggleMenu(this)">Ver Servicios</button>
+      <div class="submenu">
+        <p>Reproducciones</p>
+        <p>Oyentes Mensuales</p>
+        <p>Seguidores</p>
+      </div>
+    </div>
+  </div>
+
+  <footer style="text-align:center; padding:30px; font-size:0.9rem; color:#aaa; user-select:none;">
+    &copy; 2025 Nonstop Shopp. Todos los derechos reservados.
+  </footer>
+
+  <div class="cursor-custom"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle", stroke: { width: 0, color: "#000000" }},
+        opacity: { value: 0.3, random: false },
+        size: { value: 2, random: true },
+        line_linked: {
+          enable: true,
+          distance: 100,
+          color: "#ffffff",
+          opacity: 0.1,
+          width: 1
+        },
+        move: { enable: true, speed: 1 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100, duration: 0.4 },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+
+    function toggleMenu(btn) {
+      const grupo = btn.closest('.grupo');
+      grupo.classList.toggle('active');
+    }
+
+    // Cursor personalizado animado
+    const cursor = document.querySelector('.cursor-custom');
+    let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
+
+    function animateCursor() {
+      posX += (mouseX - posX) * 0.2;
+      posY += (mouseY - posY) * 0.2;
+      cursor.style.transform = `translate3d(${posX}px,${posY}px,0) translate(-50%, -50%)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Efecto hover cursor grande en links, botones y nav a
+    document.querySelectorAll('a, button, input, select, textarea, label, nav a').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+  </script>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element" style="position: fixed; bottom: 10px; right: 10px; z-index: 9999;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
